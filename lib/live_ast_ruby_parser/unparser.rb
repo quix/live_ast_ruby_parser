@@ -1,5 +1,8 @@
 require 'ruby2ruby'
 
+#
+# Used by +to_ruby+ in LiveAST.
+#
 module LiveASTRubyParser::Unparser
   class << self
     # Whether the unparsed code matches ruby2ruby output.
