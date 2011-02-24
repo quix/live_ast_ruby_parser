@@ -3,12 +3,17 @@ require 'sexp_processor'
 
 module LiveAST
   class Parser < SexpProcessor
+    #
     # Whether this is Ryan Davis' unified sexp format.
+    #
     def self.unified?
       true
     end
 
-    # Output an AST corresponding to a ruby source string.
+    #
+    # Returns a line --> sexp hash where sexp corresponds to the
+    # method or block defined at the given line.
+    #
     def parse(source)
       @defs = {}
       process RubyParser.new.parse(source)

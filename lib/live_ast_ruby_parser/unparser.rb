@@ -7,7 +7,7 @@ module LiveAST::Parser::Unparser
     true
   end
 
-  # Output ruby source which reflects the given AST.
+  # Return a ruby source string which reflects the given AST.
   def self.unparse(sexp)
     Ruby2Ruby.new.process(sexp)
   end
