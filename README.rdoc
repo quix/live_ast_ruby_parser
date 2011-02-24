@@ -7,5 +7,5 @@ This is the default RubyParser-based parser used by LiveAST.
 
 == Description
 
-The nested +TestForm+ module enables testing with the LiveAST test
-suite. The +Unparser+ module is used by +to_ruby+.
+The nested TestForms module enables testing with the LiveAST test
+suite. The Unparser module is used by +to_ruby+.
