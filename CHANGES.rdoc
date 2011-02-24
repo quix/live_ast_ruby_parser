@@ -1,0 +1,6 @@
+
+= live_ast_ruby_parser ChangeLog
+
+== Version 0.3.0
+
+* initial release
