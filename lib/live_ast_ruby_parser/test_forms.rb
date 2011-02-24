@@ -1,6 +1,6 @@
 
 # For testing with LiveAST.
-module LiveAST::Parser::TestForms
+module LiveASTRubyParser::TestForms
   #
   # no_arg_def(:f, "A#f") returns the ast of
   #
