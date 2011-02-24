@@ -1,5 +1,6 @@
 require 'ruby_parser'
 require 'sexp_processor'
+require 'live_ast/base'
 
 class LiveASTRubyParser < SexpProcessor
   #
@@ -58,3 +59,5 @@ end
 
 LiveASTRubyParser.autoload :Unparser,  'live_ast_ruby_parser/unparser'
 LiveASTRubyParser.autoload :TestForms, 'live_ast_ruby_parser/test_forms'
+
+LiveAST.parser = LiveASTRubyParser
