@@ -1,6 +1,10 @@
 
 = live_ast_ruby_parser ChangeLog
 
+== Version 0.5.2
+
+* doc fixes
+
 == Version 0.5.1
 
 * protect against user needlessly requiring default parser
