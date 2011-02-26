@@ -133,4 +133,42 @@ module LiveASTRubyParser::Test
       s(:masgn, s(:array, s(:lasgn, :x), s(:lasgn, :y))),
       s(:call, s(:lvar, :x), op, s(:arglist, s(:lvar, :y))))
   end
+
+  #
+  # nested_lambdas("foo") returns the ast of
+  #
+  #   lambda {
+  #     lambda {
+  #       "foo"
+  #     }
+  #   }
+  #  
+  def nested_lambdas(str)
+    s(:iter,
+      s(:call, nil, :lambda, s(:arglist)),
+      nil,
+      s(:iter, s(:call, nil, :lambda, s(:arglist)), nil, s(:str, str)))
+  end
+
+  # nested_defs(:f, :g, "foo") returns the ast of
+  #
+  #   def f
+  #     Class.new do
+  #       def g
+  #         "foo"
+  #       end
+  #     end
+  #   end
+  #   
+  def nested_defs(u, v, str)
+    s(:defn,
+      u,
+      s(:args),
+      s(:scope,
+        s(:block,
+          s(:iter,
+            s(:call, s(:const, :Class), :new, s(:arglist)),
+            nil,
+            s(:defn, v, s(:args), s(:scope, s(:block, s(:str, str))))))))
+  end
 end

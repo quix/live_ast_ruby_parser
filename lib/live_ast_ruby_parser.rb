@@ -25,7 +25,6 @@ class LiveASTRubyParser < SexpProcessor
     result << process(sexp.shift)
 
     store_sexp(result, sexp.line)
-    s()
   end
 
   def process_iter(sexp)
@@ -48,11 +47,11 @@ class LiveASTRubyParser < SexpProcessor
     end
 
     store_sexp(result, line)
-    s()
   end
 
   def store_sexp(sexp, line)
     @defs[line] = @defs.has_key?(line) ? :multiple : sexp
+    sexp
   end
 end
 
