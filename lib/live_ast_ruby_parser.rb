@@ -3,16 +3,13 @@ require 'sexp_processor'
 require 'live_ast/base'
 
 class LiveASTRubyParser < SexpProcessor
-  #
-  # Whether this is Ryan Davis' unified sexp format.
-  #
-  def self.unified?
-    true
-  end
+  VERSION = "0.6.0"
 
   #
-  # Returns a line --> sexp hash where sexp corresponds to the
-  # method or block defined at the given line.
+  # Returns a line-to-sexp hash where sexp corresponds to the method
+  # or block defined at the given line.
+  #
+  # This method is the only requirement of a LiveAST parser plugin.
   #
   def parse(source)
     @defs = {}
@@ -44,6 +41,8 @@ class LiveASTRubyParser < SexpProcessor
     # ruby_parser bug: a method without args attached to a
     # multi-line block reports the wrong line. workaround.
     #
+    # http://rubyforge.org/tracker/index.php?func=detail&aid=28940&group_id=439&atid=1778
+    #
     if result[1][3].size == 1
       line = sexp.line
     end
@@ -57,7 +56,7 @@ class LiveASTRubyParser < SexpProcessor
   end
 end
 
-LiveASTRubyParser.autoload :Unparser,  'live_ast_ruby_parser/unparser'
-LiveASTRubyParser.autoload :TestForms, 'live_ast_ruby_parser/test_forms'
+LiveASTRubyParser.autoload :Unparser, 'live_ast_ruby_parser/unparser'
+LiveASTRubyParser.autoload :Test, 'live_ast_ruby_parser/test'
 
 LiveAST.parser = LiveASTRubyParser

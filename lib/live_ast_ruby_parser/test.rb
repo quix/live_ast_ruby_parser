@@ -1,6 +1,24 @@
 
-# For testing with LiveAST.
-module LiveASTRubyParser::TestForms
+#
+# Used by the LiveAST test suite.
+#
+module LiveASTRubyParser::Test
+  class << self
+    #
+    # Whether this is Ryan Davis's unified sexp format.
+    #
+    def unified_sexp?
+      true
+    end
+
+    #
+    # Whether the unparser output matches that of ruby2ruby.
+    #
+    def unparser_matches_ruby2ruby?
+      true
+    end
+  end
+
   #
   # no_arg_def(:f, "A#f") returns the ast of
   #
