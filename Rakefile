@@ -1,6 +1,6 @@
-require_relative 'devel/jumpstart'
+require_relative 'devel/levitate'
 
-Jumpstart.new "live_ast_ruby_parser" do |s|
+Levitate.new "live_ast_ruby_parser" do |s|
   s.camel_name = "LiveASTRubyParser"
   s.developers << ["James M. Lawrence", "quixoticsycophant@gmail.com"]
   s.github_user = "quix"
