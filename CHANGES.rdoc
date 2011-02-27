@@ -1,5 +1,9 @@
 
-= live_ast_ruby_parser ChangeLog
+= live_ast_ruby_parser Changes
+
+== Version 0.6.1
+
+* removed duplicate version const
 
 == Version 0.6.0
 
