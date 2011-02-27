@@ -2,8 +2,6 @@ require 'ruby_parser'
 require 'live_ast/base'
 
 class LiveASTRubyParser
-  VERSION = "0.6.0"
-
   #
   # Returns a line-to-sexp hash where sexp corresponds to the method
   # or block defined at the given line.
