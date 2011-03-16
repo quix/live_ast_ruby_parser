@@ -3,7 +3,8 @@ require_relative 'devel/levitate'
 Levitate.new "live_ast_ruby_parser" do |s|
   s.camel_name = "LiveASTRubyParser"
   s.developers << ["James M. Lawrence", "quixoticsycophant@gmail.com"]
-  s.github_user = "quix"
+  s.username = "quix"
+  s.required_ruby_version = ">= 1.9.2"
   s.description = s.summary
   s.dependencies = [
     #
