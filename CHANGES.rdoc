@@ -1,6 +1,10 @@
 
 = live_ast_ruby_parser Changes
 
+== Version 0.6.3
+
+* handlers for "def self.foo" and "def A.foo" were missing
+
 == Version 0.6.2
 
 * add required_ruby_version to gemspec
