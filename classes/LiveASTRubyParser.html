@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang='en'>
+  <head>
+    <title>LiveASTRubyParser</title>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <link href='../css/style.css' media='screen' rel='stylesheet' type='text/css'>
+    <script type='text/javascript'>
+      //<![CDATA[
+        function popupCode(url) {
+          window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+        }
+        
+        function toggleCode(id) {
+          var code = document.getElementById(id)
+        
+          code.style.display = code.style.display != 'block' ? 'block' : 'none'
+          return true
+        }
+        
+        // Make codeblocks hidden by default
+        document.writeln('<' + 'style type="text/css">.method .source pre { display: none }<\/style>')
+      //]]>
+    </script>
+  </head>
+  <body class='page'>
+    <div class='class' id='wrapper'>
+      <div class='header'>
+        <h1 class='name'>
+          <span class='type'>class</span>
+          LiveASTRubyParser
+        </h1>
+        <ol class='paths'>
+          <li>
+            <a target="docwin" href="../files/lib/live_ast_ruby_parser/version_rb.html">lib/live_ast_ruby_parser/version.rb</a>
+          </li>
+          <li class='other'>
+            <a target="docwin" href="../files/lib/live_ast_ruby_parser_rb.html">lib/live_ast_ruby_parser.rb</a>
+          </li>
+          <li>
+            <a class='show' href='#' onclick='this.parentNode.parentNode.className += " expanded"; this.parentNode.removeChild(this); return false'>show all</a>
+          </li>
+        </ol>
+        <div class='parent'>
+          Parent:
+          <strong><a target="docwin" href="../files/lib/live_ast_ruby_parser_rb.html">live_ast_ruby_parser.rb</a></strong>
+        </div>
+      </div>
+      <div id='content'>
+        <div id='text'>
+          <div id='description'></div>
+          <div id='method-list'>
+            <h2>Methods</h2>
+            <h3>Public Instance</h3>
+            <ol>
+              <li><a target="docwin" href="#method-i-parse">parse</a></li>
+              <li><a target="docwin" href="#method-i-process">process</a></li>
+              <li><a target="docwin" href="#method-i-store_sexp">store_sexp</a></li>
+            </ol>
+          </div>
+          <div id='context'>
+          </div>
+          <div id='section'>
+            <div id='class-list'>
+              <h2>Classes and Modules</h2>
+              <ol><li>Test</li><li>Unparser</li></ol>
+            </div>
+            <div id='constants-list'>
+              <h2>Constants</h2>
+              <div class='name-list'>
+                <table summary='Constants'>
+                  <tr class='top-aligned-row context-row'>
+                    <td class='context-item-name'>VERSION</td>
+                    <td>=</td>
+                    <td class='context-item-value'>"0.6.4"</td>
+                    <td>&nbsp;</td>
+                    <td class='context-item-desc'></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div id='methods'>
+              <h2>Public Instance methods</h2>
+              <div class='method public-instance' id='method-method-i-parse'>
+                <a name='method-i-parse'></a>
+                <div class='synopsis'>
+                  <span class='name'>parse</span>
+                  <span class='arguments'>(source)</span>
+                </div>
+                <div class='description'>
+                  <p>
+                  Returns a line-to-sexp hash where sexp corresponds to the method or block
+                  defined at the given line.
+                  </p>
+                  <p>
+                  This method is the only requirement of a LiveAST parser plugin.
+                  </p>
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('method-i-parse-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='method-i-parse-source'>    <span class="ruby-comment cmt"># File lib/live_ast_ruby_parser.rb, line 11</span>&#x000A;11:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source</span>)&#x000A;12:     <span class="ruby-ivar">@defs</span> = {}&#x000A;13:     <span class="ruby-identifier">process</span> <span class="ruby-constant">RubyParser</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source</span>)&#x000A;14:     <span class="ruby-ivar">@defs</span>&#x000A;15:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-method-i-process'>
+                <a name='method-i-process'></a>
+                <div class='synopsis'>
+                  <span class='name'>process</span>
+                  <span class='arguments'>(sexp)</span>
+                </div>
+                <div class='description'>
+                  
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('method-i-process-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='method-i-process-source'>    <span class="ruby-comment cmt"># File lib/live_ast_ruby_parser.rb, line 17</span>&#x000A;17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>(<span class="ruby-identifier">sexp</span>)&#x000A;18:     <span class="ruby-keyword kw">case</span> <span class="ruby-identifier">sexp</span>.<span class="ruby-identifier">first</span>&#x000A;19:     <span class="ruby-keyword kw">when</span> <span class="ruby-value">:defn</span>, <span class="ruby-value">:defs</span>&#x000A;20:       <span class="ruby-identifier">store_sexp</span>(<span class="ruby-identifier">sexp</span>, <span class="ruby-identifier">sexp</span>.<span class="ruby-identifier">line</span>)&#x000A;21:     <span class="ruby-keyword kw">when</span> <span class="ruby-value">:iter</span>&#x000A;22:       <span class="ruby-comment cmt">#</span>&#x000A;23:       <span class="ruby-comment cmt"># ruby_parser bug: a method without args attached to a</span>&#x000A;24:       <span class="ruby-comment cmt"># multi-line block reports the wrong line. workaround.</span>&#x000A;25:       <span class="ruby-comment cmt">#</span>&#x000A;26:       <span class="ruby-comment cmt"># http://rubyforge.org/tracker/index.php?func=detail&amp;aid=28940&amp;group_id=439&amp;atid=1778</span>&#x000A;27:       <span class="ruby-comment cmt">#</span>&#x000A;28:       <span class="ruby-identifier">store_sexp</span>(<span class="ruby-identifier">sexp</span>, <span class="ruby-identifier">sexp</span>[<span class="ruby-value">1</span>][<span class="ruby-value">3</span>].<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">1</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">sexp</span>.<span class="ruby-identifier">line</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">sexp</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">line</span>)&#x000A;29:     <span class="ruby-keyword kw">end</span>&#x000A;30: &#x000A;31:     <span class="ruby-identifier">sexp</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">elem</span><span class="ruby-operator">|</span>&#x000A;32:       <span class="ruby-identifier">process</span>(<span class="ruby-identifier">elem</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">elem</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Sexp</span>&#x000A;33:     <span class="ruby-keyword kw">end</span>&#x000A;34:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+              <div class='method public-instance' id='method-method-i-store_sexp'>
+                <a name='method-i-store_sexp'></a>
+                <div class='synopsis'>
+                  <span class='name'>store_sexp</span>
+                  <span class='arguments'>(sexp, line)</span>
+                </div>
+                <div class='description'>
+                  
+                </div>
+                <div class='source'>
+                  <a class='source-toggle' href='#' onclick="toggleCode('method-i-store_sexp-source'); return false">
+                    [show source]
+                  </a>
+                  <pre id='method-i-store_sexp-source'>    <span class="ruby-comment cmt"># File lib/live_ast_ruby_parser.rb, line 36</span>&#x000A;36:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">store_sexp</span>(<span class="ruby-identifier">sexp</span>, <span class="ruby-identifier">line</span>)&#x000A;37:     <span class="ruby-ivar">@defs</span>[<span class="ruby-identifier">line</span>] = <span class="ruby-ivar">@defs</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">line</span>) <span class="ruby-operator">?</span> <span class="ruby-value">:multiple</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">sexp</span>&#x000A;38:   <span class="ruby-keyword kw">end</span></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id='footer-push'></div>
+    </div>
+    <div id='footer'>
+      <a target="docwin" href="http://github.com/mislav/hanna/tree/master"><strong>Hanna</strong> RDoc template</a>
+    </div>
+  </body>
+</html>
