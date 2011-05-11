@@ -16,7 +16,7 @@ class LiveASTRubyParser
 
   def process(sexp)
     case sexp.first
-    when :defn
+    when :defn, :defs
       store_sexp(sexp, sexp.line)
     when :iter
       #

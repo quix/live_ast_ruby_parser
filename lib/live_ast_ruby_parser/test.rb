@@ -31,6 +31,17 @@ module LiveASTRubyParser::Test
   end
 
   #
+  # singleton_no_arg_def(:f, "foo") returns the ast of
+  #
+  #   def self.f
+  #     "foo"
+  #   end
+  #
+  def singleton_no_arg_def(name, ret)
+    s(:defs, s(:self), name, s(:args), s(:scope, s(:block, s(:str, ret))))
+  end
+
+  #
   # no_arg_def_return(no_arg_def(:f, "A#f")) == "A#f"
   #
   def no_arg_def_return(ast)
@@ -46,6 +57,22 @@ module LiveASTRubyParser::Test
   #
   def binop_def(name, op)
     s(:defn,
+      name,
+      s(:args, :x, :y),
+      s(:scope,
+        s(:block, s(:call, s(:lvar, :x), op, s(:arglist, s(:lvar, :y))))))
+  end
+
+  #
+  # singleton_binop_def(:A, :f, :+) returns the ast of
+  #
+  #   def A.f(x, y)
+  #     x + y
+  #   end
+  #
+  def singleton_binop_def(const, name, op)
+    s(:defs,
+      s(:const, const),
       name,
       s(:args, :x, :y),
       s(:scope,
